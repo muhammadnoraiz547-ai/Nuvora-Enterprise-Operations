@@ -1,0 +1,857 @@
+Build a highly professional, enterprise-grade web application called Nuvora.
+
+This is NOT a generic HR dashboard, warehouse dashboard, ERP template, CRM, or AI chatbot.
+
+It is an **industry-agnostic Business Operations, Administration, Workforce, Intelligence and AI platform** that can be configured for almost any organization — manufacturing, warehouse, logistics, healthcare, education, retail, corporate offices, agriculture, hospitality, professional services, or other industries.
+
+The platform must allow an organization to manage its people, departments, operations, workflows, assets, documents, approvals, performance, KPIs, audits and organizational intelligence from one unified system.
+
+The product should feel like a **premium enterprise operating system**, not a template.
+
+## CORE DESIGN PHILOSOPHY
+
+Create a visual identity that is:
+
+* Elegant
+* Minimal
+* Professional
+* Intelligent
+* Calm
+* Sophisticated
+* Timeless
+* Industry-neutral
+* Highly usable
+* Executive-friendly
+
+DO NOT use:
+
+* Black-heavy UI
+* Purple AI-dashboard aesthetics
+* Neon colors
+* Cyberpunk styling
+* Excessive gradients
+* Excessive glassmorphism
+* Gaming-style UI
+* Cartoon illustrations
+* Excessive rounded cards
+* Huge colorful icons
+* Generic startup landing-page aesthetics
+* Typical blue/purple SaaS dashboard styling
+
+The interface should look like a serious enterprise product used by executives, administrators, HR managers and operations teams.
+
+## VISUAL SYSTEM
+
+Use a refined neutral visual language.
+
+Primary surfaces:
+
+* Warm off-white / ivory
+* Soft stone
+* Very light neutral gray
+
+Primary text:
+
+* Deep charcoal / graphite
+
+Secondary text:
+
+* Muted gray
+
+Borders:
+
+* Extremely subtle neutral borders
+
+Accent:
+
+* Use ONE restrained sophisticated accent color for interactive states and important actions.
+* The accent must be muted and elegant rather than bright.
+* Avoid making the entire interface colorful.
+
+Status colors should be reserved strictly for meaning:
+
+Success → subtle green
+Warning → muted amber
+Critical → restrained red
+Information → muted neutral accent
+
+Colors should communicate meaning, not decoration.
+
+## TYPOGRAPHY
+
+Use a premium modern sans-serif typography system.
+
+Recommended:
+
+* Inter
+* Geist
+* Manrope
+* IBM Plex Sans
+
+Use strong typography hierarchy.
+
+Headings:
+
+* Confident
+* Clean
+* Medium/Semibold weight
+
+Body:
+
+* Highly readable
+* Comfortable line height
+
+Numbers/KPIs:
+
+* Clear and prominent
+* Use tabular numerals where appropriate
+
+Do not use decorative fonts.
+
+## APPLICATION STRUCTURE
+
+Create a persistent enterprise application shell.
+
+LEFT SIDEBAR:
+
+Top:
+
+* Product logo
+* Organization name
+* Organization switcher
+
+Navigation:
+
+Overview
+
+Workspace
+
+* Tasks
+* Activity
+* Approvals
+
+People
+
+* Employees
+* Teams
+* Departments
+* Attendance
+* Performance
+
+Operations
+
+* Processes
+* Inventory
+* Assets
+* Maintenance
+* Vendors
+
+Management
+
+* Documents
+* Policies
+* Expenses
+* Requests
+
+Intelligence
+
+* AI Assistant
+* Insights
+* Recommendations
+* Reports
+
+Governance
+
+* Audit Trail
+* Verification
+* Access Control
+
+Administration
+
+* Organization Settings
+* Roles & Permissions
+* Integrations
+* Billing
+
+The sidebar must be elegant, compact and highly usable.
+
+Do not use giant icons.
+
+Use small refined line icons.
+
+Include:
+
+* Active navigation state
+* Hover states
+* Collapsed sidebar mode
+* Tooltips
+* Nested navigation where appropriate
+
+BOTTOM SIDEBAR:
+
+User profile:
+
+* Avatar
+* User name
+* Role
+* Status
+* Settings
+* Logout
+
+## TOP BAR
+
+Create a clean top navigation area containing:
+
+Left:
+
+* Breadcrumbs
+* Current page title
+
+Right:
+
+* Global search
+* Notifications
+* AI access button
+* Help
+* User profile
+
+Global search should eventually support searching across:
+
+* Employees
+* Tasks
+* Documents
+* Assets
+* Transactions
+* Activities
+* Departments
+* Reports
+
+## MAIN DASHBOARD
+
+Create an executive-level overview dashboard.
+
+The dashboard should NOT look like a collection of random cards.
+
+Use a structured information hierarchy.
+
+Top section:
+
+Greeting + contextual organization information.
+
+Example:
+
+"Good morning, Sarah"
+
+"Here is what needs your attention today."
+
+Then show:
+
+### ORGANIZATIONAL HEALTH
+
+Use 4–5 high-value KPI modules:
+
+* Workforce
+* Operations
+* Productivity
+* Pending Actions
+* Risk / Exceptions
+
+Each KPI should contain:
+
+* Current value
+* Previous-period comparison
+* Trend
+* Short contextual explanation
+
+Avoid excessive decoration.
+
+## ATTENTION CENTER
+
+Create a prominent section:
+
+"Needs Attention"
+
+Examples:
+
+* 3 approvals pending
+* 2 employees have incomplete attendance
+* Inventory threshold reached
+* Maintenance task overdue
+* Department KPI below target
+
+Each item should have:
+
+* Severity
+* Description
+* Related entity
+* Timestamp
+* Action button
+
+## PERFORMANCE OVERVIEW
+
+Create a clean analytics section containing:
+
+* Organizational performance
+* Department performance
+* Productivity trends
+* Task completion
+* Operational efficiency
+
+Charts should be restrained and professional.
+
+Do not use colorful rainbow charts.
+
+Use neutral visualization with the single accent color and semantic status colors only when necessary.
+
+## AI INTELLIGENCE PANEL
+
+The AI must feel like an integrated intelligence system.
+
+Do NOT create a childish chatbot UI.
+
+Create a sophisticated panel titled:
+
+"Organizational Intelligence"
+
+Include:
+
+"Ask about your organization"
+
+Example questions:
+
+* What requires my attention today?
+* Why did productivity decline this week?
+* Which department has the largest bottleneck?
+* What should I prioritize tomorrow?
+* Show me unusual operational activity.
+* Summarize this week's performance.
+
+The AI panel should support:
+
+* Conversation history
+* Suggested questions
+* Context-aware answers
+* Data references
+* Recommendations
+* Follow-up questions
+
+AI recommendations should visually distinguish:
+
+Observation
+Recommendation
+Reason
+Suggested Action
+
+## AI INSIGHT CARDS
+
+Create intelligent insight cards such as:
+
+"Productivity decreased 8% compared with last week."
+
+"Warehouse approval time increased."
+
+"3 pending requests have exceeded the expected processing time."
+
+Each insight must include:
+
+* What happened
+* Why it matters
+* Recommended action
+
+Do not pretend that AI knows information that is not available.
+
+## ACTIVITY TIMELINE
+
+Create a clean organizational activity feed.
+
+Examples:
+
+Employee updated
+Task completed
+Approval requested
+Document uploaded
+Inventory adjusted
+Policy changed
+AI recommendation generated
+Audit event recorded
+
+Each activity should contain:
+
+Actor
+Action
+Entity
+Timestamp
+
+## UNIVERSAL ENTITY SYSTEM
+
+The UI must be designed around reusable entities.
+
+Examples:
+
+Organization
+Site
+Department
+Team
+Employee
+Task
+Asset
+Inventory Item
+Document
+Approval
+Vendor
+Workflow
+KPI
+Audit Event
+
+Each entity should have:
+
+* List view
+* Search
+* Filters
+* Sort
+* Pagination
+* Detail page
+* Activity history
+* Related entities
+* Permissions-aware actions
+
+## TABLE DESIGN
+
+Enterprise tables are extremely important.
+
+Tables must support:
+
+* Search
+* Filters
+* Sort
+* Column visibility
+* Pagination
+* Bulk actions
+* Export
+* Row actions
+* Status indicators
+* Sticky headers where appropriate
+
+Keep tables dense but readable.
+
+Do not turn every row into oversized cards.
+
+## DETAIL PAGES
+
+Entity detail pages should use a consistent structure:
+
+Header:
+
+* Entity name
+* Status
+* Metadata
+* Primary action
+
+Tabs:
+
+Overview
+Activity
+Documents
+Related Records
+Audit History
+
+For employees:
+
+Profile
+Employment
+Attendance
+Performance
+Tasks
+Documents
+Activity
+Audit
+
+For assets:
+
+Overview
+Usage
+Maintenance
+Documents
+Activity
+Audit
+
+For departments:
+
+Overview
+People
+Performance
+Tasks
+KPIs
+Activity
+
+## ORGANIZATION ONBOARDING
+
+Create a professional onboarding flow.
+
+Step 1:
+Organization information
+
+Step 2:
+Industry
+
+Step 3:
+Organization size
+
+Step 4:
+Sites / branches
+
+Step 5:
+Departments
+
+Step 6:
+Roles
+
+Step 7:
+Operational modules
+
+Step 8:
+KPIs
+
+Step 9:
+AI configuration
+
+Step 10:
+Finish setup
+
+Important:
+
+The application must NOT hardcode itself as a warehouse, mill, hospital or HR system.
+
+Industry should be configuration.
+
+Example:
+
+Industry = Manufacturing
+
+The platform can enable:
+Production
+Inventory
+Maintenance
+
+Industry = Corporate
+
+The platform can enable:
+Projects
+People
+Expenses
+Approvals
+
+Industry = Warehouse
+
+The platform can enable:
+Inventory
+Receiving
+Dispatch
+Assets
+Maintenance
+
+## CONFIGURABLE MODULE SYSTEM
+
+Create the UI architecture so modules can be enabled/disabled.
+
+Example:
+
+Organization Settings
+→ Modules
+
+Modules:
+
+People
+HR
+Attendance
+Operations
+Inventory
+Assets
+Documents
+Finance
+Projects
+Workflows
+Approvals
+Analytics
+AI Intelligence
+Audit
+Blockchain Verification
+
+Each organization should eventually be able to configure its workspace.
+
+## ROLE-AWARE UI
+
+The interface must support different roles.
+
+Example:
+
+Super Admin
+Organization Admin
+HR Manager
+Operations Manager
+Department Manager
+Supervisor
+Employee
+
+Do not show every function to every role.
+
+The frontend should be designed for permission-aware rendering.
+
+## AUDIT / VERIFICATION UI
+
+Create an enterprise Audit section.
+
+Display:
+
+Event
+Actor
+Entity
+Action
+Timestamp
+IP / metadata placeholder
+Verification status
+
+Example:
+
+"Employee record updated"
+
+Verification:
+Verified
+
+Also create a detailed verification view showing:
+
+Record ID
+Record hash
+Timestamp
+Actor
+Previous state
+Current state
+Verification status
+Blockchain transaction reference placeholder
+
+Blockchain integration can initially use mock data/interfaces.
+
+DO NOT implement fake blockchain functionality as if it were real.
+
+Build clean integration interfaces so the backend can later connect the actual blockchain service.
+
+## REPORTING
+
+Create a Reports section.
+
+Report categories:
+
+Workforce
+Operations
+Performance
+Finance
+Inventory
+Compliance
+Audit
+AI Insights
+
+Reports should support:
+
+Date range
+Department
+Site
+Category
+Export
+
+## RESPONSIVE DESIGN
+
+Desktop-first enterprise application.
+
+Must also work on:
+
+Laptop
+Tablet
+Mobile
+
+On smaller screens:
+
+* Sidebar collapses
+* Tables become horizontally scrollable or transform appropriately
+* Filters become drawers
+* Dashboard sections stack intelligently
+* AI panel remains accessible
+
+## UX PRINCIPLES
+
+Prioritize:
+
+Clarity over decoration
+Hierarchy over density
+Consistency over novelty
+Meaningful data over visual noise
+Fast navigation
+Minimal clicks
+Predictable interactions
+
+Every action should provide clear feedback.
+
+Use:
+
+* Toast notifications
+* Loading states
+* Empty states
+* Skeleton loaders
+* Confirmation dialogs
+* Error states
+* Success states
+
+## MICROINTERACTIONS
+
+Use subtle animations only.
+
+Examples:
+
+* Sidebar transitions
+* Modal transitions
+* Hover states
+* Table row interactions
+* AI response streaming
+* Loading indicators
+
+Avoid excessive motion.
+
+## COMPONENT SYSTEM
+
+Create a reusable design system.
+
+Components should include:
+
+Button
+Input
+Select
+Dropdown
+Modal
+Drawer
+Tabs
+Badge
+Tooltip
+Toast
+Table
+Pagination
+Card
+Metric
+Chart
+Timeline
+Avatar
+Command Search
+Breadcrumb
+Sidebar
+Topbar
+AI Panel
+Activity Feed
+Empty State
+Confirmation Dialog
+
+Maintain consistent spacing, typography, borders and interaction states.
+
+## IMPORTANT PRODUCT REQUIREMENT
+
+Do not build this as a static visual prototype only.
+
+Create a realistic frontend architecture with:
+
+* Reusable components
+* Proper routing
+* Mock data layer
+* Clear TypeScript interfaces
+* Modular pages
+* API-ready service layer
+* Authentication-ready structure
+* Role/permission-ready structure
+* Multi-tenant-ready organization structure
+
+Use realistic enterprise data rather than lorem ipsum.
+
+## INITIAL ROUTES
+
+Create:
+
+/login
+
+/onboarding
+
+/dashboard
+
+/workspace/tasks
+
+/workspace/activity
+
+/workspace/approvals
+
+/people/employees
+
+/people/teams
+
+/people/departments
+
+/people/attendance
+
+/people/performance
+
+/operations/processes
+
+/operations/inventory
+
+/operations/assets
+
+/operations/maintenance
+
+/management/documents
+
+/management/expenses
+
+/intelligence/ai
+
+/intelligence/insights
+
+/intelligence/reports
+
+/governance/audit
+
+/governance/verification
+
+/settings/organization
+
+/settings/users
+
+/settings/roles
+
+/settings/modules
+
+/settings/integrations
+
+## FINAL DESIGN GOAL
+
+The final interface should feel like a combination of:
+
+* Enterprise operating system
+* Executive command center
+* Workforce management platform
+* Operational intelligence system
+* AI decision-support workspace
+
+But it must have its OWN visual identity.
+
+It should look like a serious product that could be presented to:
+
+CEOs
+COOs
+CFOs
+HR Directors
+Operations Directors
+Enterprise Administrators
+
+The design must communicate:
+
+**Trust + Intelligence + Control + Clarity + Professionalism**
+
+Do not prioritize visual effects.
+
+Prioritize product quality, information architecture, usability and scalability.
+
+Build the frontend foundation carefully so the backend, AI layer, automation layer and blockchain verification layer can be connected later without redesigning the entire UI.

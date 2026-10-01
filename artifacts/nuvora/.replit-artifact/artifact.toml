@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Nuvora"
+description = "A configurable business operations and organizational intelligence workspace for executive, people, and operations teams."
+version = "1.0.0"
+id = "artifacts/nuvora"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 26039
+
+[services.development]
+run = "pnpm --filter @workspace/nuvora run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/nuvora", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/nuvora/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "26039"
+BASE_PATH = "/"
