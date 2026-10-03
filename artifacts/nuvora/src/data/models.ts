@@ -5,7 +5,7 @@ export interface Site extends BaseRecord { city: string; region: string; siteLea
 export interface Department extends BaseRecord { head: string; teamCount: number; employeeCount: number; }
 export interface Team extends BaseRecord { department: string; lead: string; members: number; }
 export interface Employee extends BaseRecord { title: string; department: string; team: string; email: string; location: string; manager: string; startDate: string; }
-export interface Task extends BaseRecord { owner: string; dueDate: string; priority: string; category: string; }
+export interface DemoTask extends BaseRecord { owner: string; dueDate: string; priority: string; category: string; }
 export interface Asset extends BaseRecord { category: string; serial: string; assignedTo: string; site: string; lastService: string; }
 export interface InventoryItem extends BaseRecord { sku: string; category: string; quantity: number; reorderPoint: number; unit: string; site: string; vendor: string; }
 export interface Document extends BaseRecord { category: string; owner: string; updated: string; access: string; }
@@ -25,7 +25,7 @@ export interface RoleRecord extends BaseRecord { users: number; permissions: str
 export interface ModuleRecord extends BaseRecord { description: string; enabled: boolean; }
 export interface IntegrationRecord extends BaseRecord { description: string; state: string; }
 export interface AppData {
- organization: Organization; sites: Site[]; departments: Department[]; teams: Team[]; employees: Employee[]; tasks: Task[]; assets: Asset[];
+ organization: Organization; sites: Site[]; departments: Department[]; teams: Team[]; employees: Employee[]; tasks: DemoTask[]; assets: Asset[];
  inventory: InventoryItem[]; documents: Document[]; approvals: Approval[]; vendors: Vendor[]; workflows: Workflow[]; kpis: KPI[];
  audit: AuditEvent[]; insights: Insight[]; activity: ActivityRecord[]; expenses: ExpenseRecord[]; attendance: AttendanceRecord[];
  performance: PerformanceRecord[]; reports: ReportRecord[]; users: UserRecord[]; roles: RoleRecord[]; modules: ModuleRecord[]; integrations: IntegrationRecord[];

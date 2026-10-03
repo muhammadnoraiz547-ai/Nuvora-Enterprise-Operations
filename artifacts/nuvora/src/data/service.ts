@@ -1,7 +1,7 @@
 import type { AppData, CollectionKey, BaseRecord } from './models';
 
-const storageKey = 'nuvora-demo-v1';
-const org = { id:'org-nuvora', organizationId:'org-nuvora', name:'Northstar Collective', legalName:'Northstar Collective Group', industry:'Professional services', timezone:'America/Chicago', status:'Active' as const };
+const storageKey = 'operations-flow-demo-v1';
+const org = { id:'org-operations-flow', organizationId:'org-operations-flow', name:'Northstar Collective', legalName:'Northstar Collective Group', industry:'Professional services', timezone:'America/Chicago', status:'Active' as const };
 const sites = [
  {id:'site-chi',organizationId:org.id,name:'Chicago Office',city:'Chicago',region:'Illinois',siteLead:'Mara Ellison',status:'Active' as const},
  {id:'site-den',organizationId:org.id,name:'Denver Studio',city:'Denver',region:'Colorado',siteLead:'Jonah Patel',status:'Active' as const},
@@ -24,11 +24,11 @@ const seeded: AppData = {
  ],
  employees:[
   ['emp-01','Mara Ellison','Director, Operations','Operations','Workplace Experience','mara.ellison@northstar.co','Chicago Office','Elliot Brooks','2021-04-12'],
-  ['emp-02','Avery Chen','People Partner','People & Culture','People Operations','avery.chen@northstar.co','Boston Hub','Sofia Grant','2022-06-20'],
-  ['emp-03','Jonah Patel','Research Lead','Strategy & Research','Research','jonah.patel@northstar.co','Denver Studio','Sofia Grant','2020-10-05'],
+  ['emp-02','Avery Chen','People Partner','People & Culture','People Operations','avery.chen@northstar.co','Boston Hub','Alex Morgan','2022-06-20'],
+  ['emp-03','Jonah Patel','Research Lead','Strategy & Research','Research','jonah.patel@northstar.co','Denver Studio','Alex Morgan','2020-10-05'],
   ['emp-04','Luis Moreno','Operations Manager','Operations','Business Operations','luis.moreno@northstar.co','Chicago Office','Mara Ellison','2023-02-13'],
-  ['emp-05','Elliot Brooks','Finance Director','Finance','Finance & Planning','elliot.brooks@northstar.co','Chicago Office','Sofia Grant','2019-09-16'],
-  ['emp-06','Sofia Grant','Chief Operating Officer','Executive','Leadership','sofia.grant@northstar.co','Chicago Office','—','2018-01-08'],
+  ['emp-05','Elliot Brooks','Finance Director','Finance','Finance & Planning','elliot.brooks@northstar.co','Chicago Office','Alex Morgan','2019-09-16'],
+  ['emp-06','Alex Morgan','Chief Operating Officer','Executive','Leadership','alex.morgan@northstar.co','Chicago Office','—','2018-01-08'],
   ['emp-07','Priya Nair','Workplace Coordinator','Operations','Workplace Experience','priya.nair@northstar.co','Denver Studio','Mara Ellison','2023-11-06'],
   ['emp-08','Theo Martin','Senior Analyst','Strategy & Research','Research','theo.martin@northstar.co','Boston Hub','Jonah Patel','2022-03-21'],
   ['emp-09','Grace Kim','People Operations Specialist','People & Culture','People Operations','grace.kim@northstar.co','Chicago Office','Avery Chen','2024-01-15'],
@@ -37,7 +37,7 @@ const seeded: AppData = {
   ['emp-12','Caleb Rivera','Facilities Specialist','Operations','Workplace Experience','caleb.rivera@northstar.co','Chicago Office','Mara Ellison','2021-12-01']
  ].map(([id,name,title,department,team,email,location,manager,startDate],i)=>({id,organizationId:org.id,siteId:sites[i%3].id,name,title,department,team,email,location,manager,startDate,status:'Active' as const})),
  tasks:[
-  {id:'task-01',organizationId:org.id,name:'Review Q3 operating plan',owner:'Sofia Grant',dueDate:'2025-03-18',priority:'High',category:'Planning',status:'In progress'},
+  {id:'task-01',organizationId:org.id,name:'Review Q3 operating plan',owner:'Alex Morgan',dueDate:'2025-03-18',priority:'High',category:'Planning',status:'In progress'},
   {id:'task-02',organizationId:org.id,name:'Confirm Denver access schedule',owner:'Priya Nair',dueDate:'2025-03-19',priority:'Medium',category:'Workplace',status:'Pending'},
   {id:'task-03',organizationId:org.id,name:'Publish manager check-in guide',owner:'Avery Chen',dueDate:'2025-03-20',priority:'Medium',category:'People',status:'In progress'},
   {id:'task-04',organizationId:org.id,name:'Renew research data agreement',owner:'Jonah Patel',dueDate:'2025-03-21',priority:'High',category:'Governance',status:'At risk'},
@@ -61,14 +61,14 @@ const seeded: AppData = {
  documents:[
   {id:'doc-01',organizationId:org.id,name:'Remote work principles',category:'People policy',owner:'Avery Chen',updated:'2025-03-05',access:'Organization',status:'Active'},
   {id:'doc-02',organizationId:org.id,name:'Vendor due diligence standard',category:'Governance',owner:'Mara Ellison',updated:'2025-03-02',access:'Operations',status:'Active'},
-  {id:'doc-03',organizationId:org.id,name:'Q2 operating priorities',category:'Planning',owner:'Sofia Grant',updated:'2025-02-24',access:'Leadership',status:'Draft'},
+  {id:'doc-03',organizationId:org.id,name:'Q2 operating priorities',category:'Planning',owner:'Alex Morgan',updated:'2025-02-24',access:'Leadership',status:'Draft'},
   {id:'doc-04',organizationId:org.id,name:'Incident response guide',category:'Operations',owner:'Luis Moreno',updated:'2025-02-18',access:'Organization',status:'Active'},
   {id:'doc-05',organizationId:org.id,name:'Expense and travel policy',category:'Finance',owner:'Elliot Brooks',updated:'2025-02-10',access:'Organization',status:'Active'}
  ],
  approvals:[
   {id:'apr-01',organizationId:org.id,name:'Denver room booking system renewal',type:'Purchase request',requester:'Priya Nair',submitted:'2025-03-11',amount:'$4,280',approver:'Mara Ellison',status:'Pending'},
-  {id:'apr-02',organizationId:org.id,name:'Research data agreement · Helio Labs',type:'Contract',requester:'Jonah Patel',submitted:'2025-03-10',amount:'$12,600',approver:'Sofia Grant',status:'Pending'},
-  {id:'apr-03',organizationId:org.id,name:'Leadership offsite travel',type:'Expense',requester:'Sofia Grant',submitted:'2025-03-08',amount:'$2,145',approver:'Elliot Brooks',status:'Pending'},
+  {id:'apr-02',organizationId:org.id,name:'Research data agreement · Helio Labs',type:'Contract',requester:'Jonah Patel',submitted:'2025-03-10',amount:'$12,600',approver:'Alex Morgan',status:'Pending'},
+  {id:'apr-03',organizationId:org.id,name:'Leadership offsite travel',type:'Expense',requester:'Alex Morgan',submitted:'2025-03-08',amount:'$2,145',approver:'Elliot Brooks',status:'Pending'},
   {id:'apr-04',organizationId:org.id,name:'Boston acoustic panel installation',type:'Facilities',requester:'Avery Chen',submitted:'2025-03-06',amount:'$3,760',approver:'Mara Ellison',status:'Pending'},
   {id:'apr-05',organizationId:org.id,name:'Q1 research subscription',type:'Purchase request',requester:'Theo Martin',submitted:'2025-03-04',amount:'$890',approver:'Jonah Patel',status:'Approved'}
  ],
@@ -108,7 +108,7 @@ const seeded: AppData = {
   {id:'act-04',organizationId:org.id,name:'New team member',actor:'Grace Kim',action:'completed onboarding',target:'Workplace Experience',time:'Yesterday',status:'Complete'}
  ],
  expenses:[
-  {id:'exp-01',organizationId:org.id,name:'Leadership offsite travel',owner:'Sofia Grant',category:'Travel',amount:'$2,145',submitted:'2025-03-08',status:'Pending'},
+  {id:'exp-01',organizationId:org.id,name:'Leadership offsite travel',owner:'Alex Morgan',category:'Travel',amount:'$2,145',submitted:'2025-03-08',status:'Pending'},
   {id:'exp-02',organizationId:org.id,name:'Research interview honoraria',owner:'Jonah Patel',category:'Research',amount:'$1,280',submitted:'2025-03-06',status:'Approved'},
   {id:'exp-03',organizationId:org.id,name:'Denver studio supplies',owner:'Priya Nair',category:'Workplace',amount:'$438',submitted:'2025-03-04',status:'Approved'},
   {id:'exp-04',organizationId:org.id,name:'Client workshop transit',owner:'Theo Martin',category:'Travel',amount:'$186',submitted:'2025-03-02',status:'Rejected'}
@@ -128,13 +128,13 @@ const seeded: AppData = {
   {id:'perf-05',organizationId:org.id,name:'Grace Kim',employee:'Grace Kim',role:'People Operations Specialist',team:'People Operations',rating:'Check-in due',checkIn:'Due Mar 20',status:'Pending'}
  ],
  reports:[
-  {id:'rep-01',organizationId:org.id,name:'Operating health · March',category:'Executive',owner:'Sofia Grant',period:'March 2025',modified:'2025-03-14',status:'Active'},
+  {id:'rep-01',organizationId:org.id,name:'Operating health · March',category:'Executive',owner:'Alex Morgan',period:'March 2025',modified:'2025-03-14',status:'Active'},
   {id:'rep-02',organizationId:org.id,name:'People & team pulse',category:'People',owner:'Avery Chen',period:'Q1 2025',modified:'2025-03-12',status:'Active'},
   {id:'rep-03',organizationId:org.id,name:'Spend by site',category:'Finance',owner:'Elliot Brooks',period:'February 2025',modified:'2025-03-08',status:'Active'},
   {id:'rep-04',organizationId:org.id,name:'Open risk register',category:'Governance',owner:'Mara Ellison',period:'March 2025',modified:'2025-03-05',status:'Active'}
  ],
  users:[
-  {id:'usr-01',organizationId:org.id,name:'Sofia Grant',email:'sofia.grant@northstar.co',role:'Organization admin',lastActive:'Now',status:'Active'},
+  {id:'usr-01',organizationId:org.id,name:'Alex Morgan',email:'alex.morgan@northstar.co',role:'Organization admin',lastActive:'Now',status:'Active'},
   {id:'usr-02',organizationId:org.id,name:'Mara Ellison',email:'mara.ellison@northstar.co',role:'Operations manager',lastActive:'18 min ago',status:'Active'},
   {id:'usr-03',organizationId:org.id,name:'Avery Chen',email:'avery.chen@northstar.co',role:'People manager',lastActive:'1 hour ago',status:'Active'},
   {id:'usr-04',organizationId:org.id,name:'Owen Foster',email:'owen.foster@northstar.co',role:'Contributor',lastActive:'Yesterday',status:'Active'}
@@ -161,6 +161,7 @@ const seeded: AppData = {
 
 function clone<T>(value:T):T { return JSON.parse(JSON.stringify(value)) as T; }
 export const demoService = {
+ getSeeded(): AppData { return clone(seeded); },
  get(): AppData {
   try { const stored=localStorage.getItem(storageKey); if(stored) return JSON.parse(stored) as AppData; } catch {}
   return clone(seeded);
@@ -169,7 +170,7 @@ export const demoService = {
  reset():AppData { const fresh=clone(seeded); this.save(fresh); return fresh; },
  add<T extends BaseRecord>(data:AppData,key:CollectionKey,record:Omit<T,'id'|'organizationId'> & Partial<Pick<T,'id'|'organizationId'>>):AppData {
   const next=clone(data); const entry={...record,id:record.id ?? `${key.slice(0,3)}-${Date.now().toString(36)}`,organizationId:org.id,updatedAt:new Date().toISOString().slice(0,10)} as T;
-  (next[key] as T[]).unshift(entry); this.save(next); return next;
+    (next[key] as unknown as T[]).unshift(entry); this.save(next); return next;
  },
  update<T extends BaseRecord>(data:AppData,key:CollectionKey,id:string,patch:Partial<T>):AppData {
   const next=clone(data); (next as any)[key]=((next as any)[key] as T[]).map((r:T)=>r.id===id?{...r,...patch,updatedAt:new Date().toISOString().slice(0,10)}:r); this.save(next); return next;

@@ -9,20 +9,14 @@ router = "path"
 [[services]]
 name = "web"
 paths = [ "/" ]
-localPort = 26039
+localPort = 3000
 
 [services.development]
-run = "pnpm --filter @workspace/nuvora run dev"
+run = "npm run dev --workspace=@workspace/nuvora"
 
 [services.production]
-build = [ "pnpm", "--filter", "@workspace/nuvora", "run", "build" ]
-serve = "static"
-publicDir = "artifacts/nuvora/dist/public"
-
-[[services.production.rewrites]]
-from = "/*"
-to = "/index.html"
+build = [ "npm", "run", "build", "--workspace=@workspace/nuvora" ]
+serve = "npm run start --workspace=@workspace/nuvora"
 
 [services.env]
-PORT = "26039"
-BASE_PATH = "/"
+PORT = "3000"

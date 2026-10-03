@@ -1,36 +1,643 @@
 openapi: 3.1.0
 info:
-  # Do not change the title, if the title changes, the import paths will be broken
-  title: Api
+  title: Nuvora API
+  description: Organization-scoped Nuvora business API.
   version: 0.1.0
-  description: API specification
 servers:
-  - url: /api
-    description: Base API path
-tags:
-  - name: health
-    description: Health operations
+- url: /api
+  description: Nuvora API
 paths:
   /healthz:
     get:
-      operationId: healthCheck
-      tags: [health]
+      tags:
+      - health
       summary: Health check
-      description: Returns server health status
+      operationId: health_check_api_healthz_get
       responses:
-        "200":
-          description: Healthy
+        '200':
+          description: Successful Response
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/HealthStatus"
+                additionalProperties:
+                  type: string
+                type: object
+                title: Response Health Check Api Healthz Get
+  /tasks:
+    get:
+      tags:
+      - tasks
+      summary: List organization tasks
+      operationId: list_tasks_api_tasks_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: status
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: array
+            items:
+              $ref: '#/components/schemas/TaskStatus'
+          - type: 'null'
+          title: Status
+      - name: priority
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/TaskPriority'
+          - type: 'null'
+          title: Priority
+      - name: assignee_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Assignee Id
+      - name: site_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Site Id
+      - name: department_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Department Id
+      - name: search
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            maxLength: 200
+          - type: 'null'
+          title: Search
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+          title: Page
+      - name: page_size
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 25
+          title: Page Size
+      - name: sort_by
+        in: query
+        required: false
+        schema:
+          enum:
+          - created_at
+          - updated_at
+          - due_at
+          - title
+          - status
+          - priority
+          type: string
+          default: updated_at
+          title: Sort By
+      - name: sort_order
+        in: query
+        required: false
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+          default: desc
+          title: Sort Order
+      - name: include_archived
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+          title: Include Archived
+      - name: Organization-ID
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Organization-Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - tasks
+      summary: Create a task
+      operationId: create_task_api_tasks_post
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: Organization-ID
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Organization-Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /tasks/{task_id}:
+    get:
+      tags:
+      - tasks
+      summary: Get an organization task
+      operationId: get_task_api_tasks__task_id__get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: task_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Task Id
+      - name: include_archived
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+          title: Include Archived
+      - name: Organization-ID
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Organization-Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      tags:
+      - tasks
+      summary: Update a task
+      operationId: update_task_api_tasks__task_id__patch
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: task_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Task Id
+      - name: Organization-ID
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Organization-Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - tasks
+      summary: Archive a task
+      operationId: archive_task_api_tasks__task_id__delete
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: task_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Task Id
+      - name: Organization-ID
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Organization-Id
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HealthStatus:
-      type: object
+    HTTPValidationError:
       properties:
-        status:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    TaskCreate:
+      properties:
+        title:
           type: string
+          maxLength: 240
+          minLength: 1
+          title: Title
+        description:
+          anyOf:
+          - type: string
+            maxLength: 10000
+          - type: 'null'
+          title: Description
+        category:
+          anyOf:
+          - type: string
+            maxLength: 100
+          - type: 'null'
+          title: Category
+        priority:
+          $ref: '#/components/schemas/TaskPriority'
+          default: MEDIUM
+        due_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Due At
+        assignee_user_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Assignee User Id
+        site_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Site Id
+        department_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Department Id
+        parent_task_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Parent Task Id
+        metadata:
+          additionalProperties: true
+          type: object
+          title: Metadata
+      additionalProperties: false
+      type: object
       required:
-        - status
-
+      - title
+      title: TaskCreate
+    TaskListResponse:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/TaskResponse'
+          type: array
+          title: Items
+        page:
+          type: integer
+          title: Page
+        page_size:
+          type: integer
+          title: Page Size
+        total:
+          type: integer
+          title: Total
+      type: object
+      required:
+      - items
+      - page
+      - page_size
+      - total
+      title: TaskListResponse
+    TaskPriority:
+      type: string
+      enum:
+      - LOW
+      - MEDIUM
+      - HIGH
+      title: TaskPriority
+    TaskResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        organization_id:
+          type: string
+          format: uuid
+          title: Organization Id
+        site_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Site Id
+        department_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Department Id
+        creator_user_id:
+          type: string
+          format: uuid
+          title: Creator User Id
+        assignee_user_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Assignee User Id
+        creator_display_name:
+          type: string
+          title: Creator Display Name
+        assignee_display_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Assignee Display Name
+        title:
+          type: string
+          title: Title
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        category:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Category
+        status:
+          $ref: '#/components/schemas/TaskStatus'
+        allowed_status_transitions:
+          items:
+            $ref: '#/components/schemas/TaskStatus'
+          type: array
+          title: Allowed Status Transitions
+        priority:
+          $ref: '#/components/schemas/TaskPriority'
+        due_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Due At
+        parent_task_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Parent Task Id
+        metadata:
+          additionalProperties: true
+          type: object
+          title: Metadata
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+        completed_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Completed At
+        archived_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Archived At
+        archived_by_user_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Archived By User Id
+      type: object
+      required:
+      - id
+      - organization_id
+      - site_id
+      - department_id
+      - creator_user_id
+      - assignee_user_id
+      - creator_display_name
+      - assignee_display_name
+      - title
+      - description
+      - category
+      - status
+      - allowed_status_transitions
+      - priority
+      - due_at
+      - parent_task_id
+      - metadata
+      - created_at
+      - updated_at
+      - completed_at
+      - archived_at
+      - archived_by_user_id
+      title: TaskResponse
+    TaskStatus:
+      type: string
+      enum:
+      - TODO
+      - IN_PROGRESS
+      - BLOCKED
+      - COMPLETED
+      - CANCELLED
+      title: TaskStatus
+    TaskUpdate:
+      properties:
+        title:
+          anyOf:
+          - type: string
+            maxLength: 240
+            minLength: 1
+          - type: 'null'
+          title: Title
+        description:
+          anyOf:
+          - type: string
+            maxLength: 10000
+          - type: 'null'
+          title: Description
+        category:
+          anyOf:
+          - type: string
+            maxLength: 100
+          - type: 'null'
+          title: Category
+        priority:
+          anyOf:
+          - $ref: '#/components/schemas/TaskPriority'
+          - type: 'null'
+        due_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Due At
+        assignee_user_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Assignee User Id
+        site_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Site Id
+        department_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Department Id
+        parent_task_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Parent Task Id
+        status:
+          anyOf:
+          - $ref: '#/components/schemas/TaskStatus'
+          - type: 'null'
+        metadata:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Metadata
+      additionalProperties: false
+      type: object
+      title: TaskUpdate
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
